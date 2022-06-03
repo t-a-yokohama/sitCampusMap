@@ -9,7 +9,7 @@ import UIKit
 import Foundation
 import CoreLocation
 
-@objc(DeviceHeading) class DeviceHeading: NSObject {
+@objc(DeviceHeading) class DeviceHeading: NSObject, CLLocationManagerDelegate {
   
   var myLocationManager: CLLocationManager!
   
