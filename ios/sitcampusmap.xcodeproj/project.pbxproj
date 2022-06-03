@@ -8,11 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* sitcampusmapTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* sitcampusmapTests.m */; };
-		0C80B921A6F3F58F76C31292 /* libPods-sitcampusmap.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-sitcampusmap.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		7699B88040F8A987B510C191 /* libPods-sitcampusmap-sitcampusmapTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-sitcampusmap-sitcampusmapTests.a */; };
+		35C2D8455C48CB92A83B28EB /* libPods-sitcampusmap-sitcampusmapTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19C4B47E38D982905F7C4332 /* libPods-sitcampusmap-sitcampusmapTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		D66E738A2845CADD007C939B /* DeviceHeading.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66E73892845CADD007C939B /* DeviceHeading.swift */; };
 		D66E738D2845CC59007C939B /* DeviceHeading.m in Sources */ = {isa = PBXBuildFile; fileRef = D66E738C2845CC59007C939B /* DeviceHeading.m */; };
@@ -38,18 +37,19 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = sitcampusmap/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = sitcampusmap/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = sitcampusmap/main.m; sourceTree = "<group>"; };
-		19F6CBCC0A4E27FBF8BF4A61 /* libPods-sitcampusmap-sitcampusmapTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-sitcampusmap-sitcampusmapTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		19C4B47E38D982905F7C4332 /* libPods-sitcampusmap-sitcampusmapTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-sitcampusmap-sitcampusmapTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B4392A12AC88292D35C810B /* Pods-sitcampusmap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sitcampusmap.debug.xcconfig"; path = "Target Support Files/Pods-sitcampusmap/Pods-sitcampusmap.debug.xcconfig"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-sitcampusmap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sitcampusmap.release.xcconfig"; path = "Target Support Files/Pods-sitcampusmap/Pods-sitcampusmap.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-sitcampusmap-sitcampusmapTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sitcampusmap-sitcampusmapTests.debug.xcconfig"; path = "Target Support Files/Pods-sitcampusmap-sitcampusmapTests/Pods-sitcampusmap-sitcampusmapTests.debug.xcconfig"; sourceTree = "<group>"; };
-		5DCACB8F33CDC322A6C60F78 /* libPods-sitcampusmap.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-sitcampusmap.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = sitcampusmap/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-sitcampusmap-sitcampusmapTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sitcampusmap-sitcampusmapTests.release.xcconfig"; path = "Target Support Files/Pods-sitcampusmap-sitcampusmapTests/Pods-sitcampusmap-sitcampusmapTests.release.xcconfig"; sourceTree = "<group>"; };
+		A0CB4DD2C10D67D203CFD272 /* libPods-sitcampusmap.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-sitcampusmap.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7EB86A80D606FF836105C53 /* Pods-sitcampusmapTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sitcampusmapTests.debug.xcconfig"; path = "Target Support Files/Pods-sitcampusmapTests/Pods-sitcampusmapTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D66A71AF2849C93400573A8D /* sitcampusmap-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "sitcampusmap-Bridging-Header.h"; sourceTree = "<group>"; };
 		D66E73892845CADD007C939B /* DeviceHeading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceHeading.swift; sourceTree = "<group>"; };
-		D66E738B2845CB66007C939B /* DeviceHeading.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceHeading.h; sourceTree = "<group>"; };
 		D66E738C2845CC59007C939B /* DeviceHeading.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceHeading.m; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		F3477A093FAA05F4E0EEDD1C /* Pods-sitcampusmapTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sitcampusmapTests.release.xcconfig"; path = "Target Support Files/Pods-sitcampusmapTests/Pods-sitcampusmapTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7699B88040F8A987B510C191 /* libPods-sitcampusmap-sitcampusmapTests.a in Frameworks */,
+				35C2D8455C48CB92A83B28EB /* libPods-sitcampusmap-sitcampusmapTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,7 +65,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C80B921A6F3F58F76C31292 /* libPods-sitcampusmap.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,7 +92,6 @@
 			isa = PBXGroup;
 			children = (
 				D66E738C2845CC59007C939B /* DeviceHeading.m */,
-				D66E738B2845CB66007C939B /* DeviceHeading.h */,
 				D66E73892845CADD007C939B /* DeviceHeading.swift */,
 				D66A71AF2849C93400573A8D /* sitcampusmap-Bridging-Header.h */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
@@ -110,8 +108,8 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				5DCACB8F33CDC322A6C60F78 /* libPods-sitcampusmap.a */,
-				19F6CBCC0A4E27FBF8BF4A61 /* libPods-sitcampusmap-sitcampusmapTests.a */,
+				A0CB4DD2C10D67D203CFD272 /* libPods-sitcampusmap.a */,
+				19C4B47E38D982905F7C4332 /* libPods-sitcampusmap-sitcampusmapTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -154,6 +152,8 @@
 				5709B34CF0A7D63546082F79 /* Pods-sitcampusmap.release.xcconfig */,
 				5B7EB9410499542E8C5724F5 /* Pods-sitcampusmap-sitcampusmapTests.debug.xcconfig */,
 				89C6BE57DB24E9ADA2F236DE /* Pods-sitcampusmap-sitcampusmapTests.release.xcconfig */,
+				A7EB86A80D606FF836105C53 /* Pods-sitcampusmapTests.debug.xcconfig */,
+				F3477A093FAA05F4E0EEDD1C /* Pods-sitcampusmapTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -169,7 +169,8 @@
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				F6A41C54EA430FDDC6A6ED99 /* [CP] Copy Pods Resources */,
+				C88BDE6B97049BD11E9AA1DE /* [CP] Embed Pods Frameworks */,
+				BE0C6FF5DBE384C7E75A26F7 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -191,7 +192,8 @@
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				E235C05ADACE081382539298 /* [CP] Copy Pods Resources */,
+				30E0CA652AED909B67E27ABB /* [CP] Embed Pods Frameworks */,
+				FB8E925766F027E7E68E6792 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -272,6 +274,23 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nexport NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
+		30E0CA652AED909B67E27ABB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-sitcampusmap/Pods-sitcampusmap-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-sitcampusmap/Pods-sitcampusmap-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-sitcampusmap/Pods-sitcampusmap-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		A55EABD7B0C7F3A422A6CC61 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -292,6 +311,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BE0C6FF5DBE384C7E75A26F7 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-sitcampusmap-sitcampusmapTests/Pods-sitcampusmap-sitcampusmapTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-sitcampusmap-sitcampusmapTests/Pods-sitcampusmap-sitcampusmapTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-sitcampusmap-sitcampusmapTests/Pods-sitcampusmap-sitcampusmapTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */ = {
@@ -316,7 +352,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E235C05ADACE081382539298 /* [CP] Copy Pods Resources */ = {
+		C88BDE6B97049BD11E9AA1DE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-sitcampusmap-sitcampusmapTests/Pods-sitcampusmap-sitcampusmapTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-sitcampusmap-sitcampusmapTests/Pods-sitcampusmap-sitcampusmapTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-sitcampusmap-sitcampusmapTests/Pods-sitcampusmap-sitcampusmapTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FB8E925766F027E7E68E6792 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -331,23 +384,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-sitcampusmap/Pods-sitcampusmap-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F6A41C54EA430FDDC6A6ED99 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-sitcampusmap-sitcampusmapTests/Pods-sitcampusmap-sitcampusmapTests-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-sitcampusmap-sitcampusmapTests/Pods-sitcampusmap-sitcampusmapTests-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-sitcampusmap-sitcampusmapTests/Pods-sitcampusmap-sitcampusmapTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -464,6 +500,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = sitcampusmap/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -491,6 +528,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				INFOPLIST_FILE = sitcampusmap/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -613,6 +651,7 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				EXCLUDED_ARCHS = "";
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;

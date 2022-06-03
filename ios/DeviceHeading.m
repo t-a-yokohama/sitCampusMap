@@ -6,10 +6,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "DeviceHeading.h"
+#import <React/RCTBridgeModule.h>
 
-@implementation DeviceHeading
+@interface RCT_EXTERN_MODULE(DeviceHeading,NSObject)
 
-RCT_EXPORT_MODULE()
+  RCT_EXTERN_METHOD(watchHeading: (RCTResponseSenderBlock) callback)
+  RCT_EXTERN_METHOD(stop)
 
 @end
