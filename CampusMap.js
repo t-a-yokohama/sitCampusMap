@@ -10,10 +10,13 @@ import {
     Dimensions,
     TouchableOpacity,
     Platform,
+    NativeModules,
 } from 'react-native';
 import Geolocation from 'react-native-geolocation-service';
 import LPF from 'lpf/lib/LPF';
 import Modal from 'react-native-modal';
+
+const {DeviceHeading} = NativeModules;
 
 // iOSに位置情報権限を要求
 if (Platform.OS == 'ios') {
@@ -46,6 +49,9 @@ const CampusMap: () => Node = () => {
 
     // 方角固定のモード保存用
     const [mapHeading, setMapHeading] = useState('west');
+
+    // 方角取得時の格納用
+    const [deviceHeading, setDeviceHeading] = useState(0);
 
     // モーダルの表示・非表示切り替え
     const [modalVisible, setModalVisible] = useState(false);
@@ -128,6 +134,23 @@ const CampusMap: () => Node = () => {
         []
     );
 
+    // 方位角をモジュールから取得
+    useEffect(
+        () => {
+            DeviceHeading.watchHeading(
+                () => {
+                    console.log(azimuth);
+                    setDeviceHeading(azimuth);
+                }
+            );
+
+            return () => {
+                DeviceHeading.stop();
+            }
+        },
+        []
+    );
+
 
     // 方位角が更新されたらマップに反映させる処理
     useEffect(
@@ -140,11 +163,11 @@ const CampusMap: () => Node = () => {
                     setMapDeg(0);
                     break;
                 case 'around':
-                    // setMapDeg(___Heading);
+                    setMapDeg(deviceHeading);
                     break;
             }
         },
-        [/*___Heading,*/mapHeading]
+        [deviceHeading,mapHeading]
     );
 
     // マップへのタッチが始まったときの動作
