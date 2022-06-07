@@ -21,15 +21,15 @@ class DeviceHeading(reactContext: ReactApplicationContext) : ReactContextBaseJav
     override fun getLifecycle() = lifecycleRegistry
 
 
-    @MainThread
     @ReactMethod
     fun stop() {
+        @MainThread
         lifecycleRegistry.currentState = Lifecycle.State.RESUMED
     }
 
-    @MainThread
     @ReactMethod
     fun watchHeading(callback: Callback) {
+        @MainThread
         lifecycleRegistry.currentState = Lifecycle.State.STARTED
 
         SensorLiveData(reactApplicationContext).observe(this, Observer<Double> { azimuth: Double ->
