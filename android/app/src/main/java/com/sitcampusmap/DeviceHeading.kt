@@ -4,10 +4,10 @@ import android.hardware.Sensor
 import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
+import androidx.annotation.MainThread
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LifecycleRegistry
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import com.facebook.react.bridge.Callback
 import com.facebook.react.bridge.ReactApplicationContext
@@ -21,12 +21,13 @@ class DeviceHeading(reactContext: ReactApplicationContext) : ReactContextBaseJav
     override fun getLifecycle() = lifecycleRegistry
 
 
+    @MainThread
     @ReactMethod
     fun stop() {
         lifecycleRegistry.currentState = Lifecycle.State.RESUMED
     }
 
-
+    @MainThread
     @ReactMethod
     fun watchHeading(callback: Callback) {
         lifecycleRegistry.currentState = Lifecycle.State.STARTED
