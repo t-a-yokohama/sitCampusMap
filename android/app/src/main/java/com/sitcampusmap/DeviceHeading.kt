@@ -1,9 +1,4 @@
 package com.sitcampusmap
-import android.content.Context
-import android.hardware.Sensor
-import android.hardware.SensorEvent
-import android.hardware.SensorEventListener
-import android.hardware.SensorManager
 import androidx.annotation.MainThread
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
@@ -22,14 +17,14 @@ class DeviceHeading(reactContext: ReactApplicationContext) : ReactContextBaseJav
 
 
     @ReactMethod
+    @MainThread
     fun stop() {
-        @MainThread
         lifecycleRegistry.currentState = Lifecycle.State.RESUMED
     }
 
     @ReactMethod
+    @MainThread
     fun watchHeading(callback: Callback) {
-        @MainThread
         lifecycleRegistry.currentState = Lifecycle.State.STARTED
 
         SensorLiveData(reactApplicationContext).observe(this, Observer<Double> { azimuth: Double ->
