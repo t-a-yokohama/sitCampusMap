@@ -1,34 +1,49 @@
 package com.sitcampusmap
-import androidx.annotation.MainThread
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LifecycleRegistry
 import androidx.lifecycle.Observer
-import com.facebook.react.bridge.Callback
-import com.facebook.react.bridge.ReactApplicationContext
-import com.facebook.react.bridge.ReactContextBaseJavaModule
-import com.facebook.react.bridge.ReactMethod
+import com.facebook.react.bridge.*
 
-class DeviceHeading(reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext), LifecycleOwner {
+class DeviceHeading(reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext), LifecycleEventListener, LifecycleOwner {
     override fun getName(): String = "DeviceHeading"
 
-    private val lifecycleRegistry = LifecycleRegistry(this)
+    private lateinit var lifecycleRegistry: LifecycleRegistry
+
+    init {
+        reactContext.addLifecycleEventListener(this)
+        lifecycleRegistry = LifecycleRegistry(this)
+        lifecycleRegistry.currentState = Lifecycle.State.CREATED
+    }
+
     override fun getLifecycle() = lifecycleRegistry
 
+    override fun onHostDestroy() {
+        lifecycleRegistry.currentState = Lifecycle.State.DESTROYED
+    }
 
-    @ReactMethod
-    @MainThread
-    fun stop() {
+    override fun onHostResume() {
         lifecycleRegistry.currentState = Lifecycle.State.RESUMED
     }
 
+    override fun onHostPause() {
+        lifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_PAUSE)
+    }
+
+
     @ReactMethod
-    @MainThread
-    fun watchHeading(callback: Callback) {
+    fun stop(reactContext: ReactApplicationContext) {
+        lifecycleRegistry.currentState = Lifecycle.State.DESTROYED
+    }
+
+    @ReactMethod
+    fun watchHeading(callback: Callback, reactContext: ReactApplicationContext) {
         lifecycleRegistry.currentState = Lifecycle.State.STARTED
 
         SensorLiveData(reactApplicationContext).observe(this, Observer<Double> { azimuth: Double ->
             callback.invoke(azimuth)
         })
     }
+
+
 }
