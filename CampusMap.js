@@ -138,7 +138,7 @@ const CampusMap: () => Node = () => {
     useEffect(
         () => {
             DeviceHeading.watchHeading(
-                () => {
+                azimuth => {
                     console.log(azimuth);
                     setDeviceHeading(azimuth);
                 }
