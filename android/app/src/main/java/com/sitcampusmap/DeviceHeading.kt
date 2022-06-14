@@ -9,6 +9,8 @@ import com.facebook.react.bridge.*
 class DeviceHeading(reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
     override fun getName(): String = "DeviceHeading"
 
+    @ReactMethod(isBlockingSynchronousMethod = true)
+
     private val myLifecycleOwner = MyLifecycleOwner()
 
     @ReactMethod
