@@ -15,6 +15,7 @@ import CoreLocation
   
   @objc public func watchHeading(_ callback: RCTResponseSenderBlock) {
     myLocationManager = CLLocationManager()
+    myLocationManager.requestWhenInUseAuthorization()
     myLocationManager.delegate = self
     myLocationManager.startUpdatingHeading()
     

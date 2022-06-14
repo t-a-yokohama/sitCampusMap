@@ -49,6 +49,8 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>Location When In Use Usage Description</key>
+	<string>このアプリは、地図を表示するために位置情報を取得します。サーバへの送信は一切行っておりません。</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 </dict>
