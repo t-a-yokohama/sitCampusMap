@@ -1,35 +1,42 @@
 package com.sitcampusmap
 
-import androidx.annotation.MainThread
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LifecycleRegistry
 import androidx.lifecycle.Observer
-import com.facebook.react.bridge.Callback
-import com.facebook.react.bridge.ReactApplicationContext
-import com.facebook.react.bridge.ReactContextBaseJavaModule
-import com.facebook.react.bridge.ReactMethod
+import com.facebook.react.bridge.*
 
-class DeviceHeading(reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext), LifecycleOwner {
+class DeviceHeading(reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
     override fun getName(): String = "DeviceHeading"
 
-    private val lifecycleRegistry = LifecycleRegistry(this)
-    override fun getLifecycle() = lifecycleRegistry
-
+    private val myLifecycleOwner = MyLifecycleOwner()
 
     @ReactMethod
-    fun stop() {
-        @MainThread
-        lifecycleRegistry.currentState = Lifecycle.State.RESUMED
+    fun stop(reactContext: ReactApplicationContext) {
+        myLifecycleOwner.stop()
     }
 
     @ReactMethod
-    fun watchHeading(callback: Callback) {
-        @MainThread
-        lifecycleRegistry.currentState = Lifecycle.State.STARTED
+    fun watchHeading(callback: Callback, reactContext: ReactApplicationContext) {
+        myLifecycleOwner.start()
 
-        SensorLiveData(reactApplicationContext).observe(this, Observer<Double> { azimuth: Double ->
+        SensorLiveData(reactApplicationContext).observe(myLifecycleOwner, Observer<Double> { azimuth: Double ->
             callback.invoke(azimuth)
         })
+    }
+}
+
+
+class MyLifecycleOwner : LifecycleOwner {
+    private val lifecycleRegistry = LifecycleRegistry(this)
+
+    override fun getLifecycle() = lifecycleRegistry
+
+    fun start() {
+        lifecycleRegistry.currentState = Lifecycle.State.STARTED
+    }
+
+    fun stop() {
+        lifecycleRegistry.currentState = Lifecycle.State.CREATED
     }
 }
