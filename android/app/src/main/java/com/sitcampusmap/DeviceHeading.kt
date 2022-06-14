@@ -5,45 +5,37 @@ import androidx.lifecycle.LifecycleRegistry
 import androidx.lifecycle.Observer
 import com.facebook.react.bridge.*
 
-class DeviceHeading(reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext), LifecycleEventListener, LifecycleOwner {
+class DeviceHeading(reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
     override fun getName(): String = "DeviceHeading"
 
-    private lateinit var lifecycleRegistry: LifecycleRegistry
-
-    init {
-        reactContext.addLifecycleEventListener(this)
-        lifecycleRegistry = LifecycleRegistry(this)
-        lifecycleRegistry.currentState = Lifecycle.State.CREATED
-    }
-
-    override fun getLifecycle() = lifecycleRegistry
-
-    override fun onHostDestroy() {
-        lifecycleRegistry.currentState = Lifecycle.State.DESTROYED
-    }
-
-    override fun onHostResume() {
-        lifecycleRegistry.currentState = Lifecycle.State.RESUMED
-    }
-
-    override fun onHostPause() {
-        lifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_PAUSE)
-    }
-
+    private val myLifecycleOwner = MyLifecycleOwner()
 
     @ReactMethod
     fun stop(reactContext: ReactApplicationContext) {
-        lifecycleRegistry.currentState = Lifecycle.State.DESTROYED
+        myLifecycleOwner.stop()
     }
 
     @ReactMethod
     fun watchHeading(callback: Callback, reactContext: ReactApplicationContext) {
-        lifecycleRegistry.currentState = Lifecycle.State.STARTED
+        myLifecycleOwner.start()
 
-        SensorLiveData(reactApplicationContext).observe(this, Observer<Double> { azimuth: Double ->
+        SensorLiveData(reactApplicationContext).observe(myLifecycleOwner, Observer<Double> { azimuth: Double ->
             callback.invoke(azimuth)
         })
     }
+}
 
 
+class MyLifecycleOwner : LifecycleOwner {
+    private val lifecycleRegistry = LifecycleRegistry(this)
+
+    override fun getLifecycle() = lifecycleRegistry
+
+    fun start() {
+        lifecycleRegistry.currentState = Lifecycle.State.STARTED
+    }
+
+    fun stop() {
+        lifecycleRegistry.currentState = Lifecycle.State.CREATED
+    }
 }
