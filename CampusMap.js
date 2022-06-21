@@ -12,8 +12,9 @@ import {
     Platform,
 } from 'react-native';
 import Geolocation from 'react-native-geolocation-service';
-import LPF from 'lpf/lib/LPF';
 import Modal from 'react-native-modal';
+import DeviceHeading from './DeviceHeading';
+
 
 // iOSに位置情報権限を要求
 if (Platform.OS == 'ios') {
@@ -47,6 +48,9 @@ const CampusMap: () => Node = () => {
     // 方角固定のモード保存用
     const [mapHeading, setMapHeading] = useState('west');
 
+    // 方角取得時の格納用
+    const [deviceHeading, setDeviceHeading] = useState(0);
+
     // モーダルの表示・非表示切り替え
     const [modalVisible, setModalVisible] = useState(false);
 
@@ -70,7 +74,7 @@ const CampusMap: () => Node = () => {
             left: mapLeftX,
             height: mapHeight,
             width: mapWidth,
-            transform: [{ rotate: mapDeg + "deg" },
+            transform: [{ rotate: -mapDeg + "deg" },
                         { scale: mapScale},
                         ],
         },
@@ -128,23 +132,48 @@ const CampusMap: () => Node = () => {
         []
     );
 
+    // 方位角をモジュールから取得
+    useEffect(
+        () => {
+            const os = {};
+            if (Platform.OS == 'android') {
+                os.delay = 500
+            }
+            else if (Platform.OS == 'ios') {
+                os.delay = 20
+            }
+
+            const watchId =  DeviceHeading.watchHeading(
+                azimuth => {
+                    if (azimuth != null) setDeviceHeading(azimuth);
+                },
+                os.delay
+            );
+
+            return () => {
+                DeviceHeading.stop(watchId);
+            }
+        },
+        []
+    );
+
 
     // 方位角が更新されたらマップに反映させる処理
     useEffect(
         () => {
             switch (mapHeading) {
                 case 'west':
-                    setMapDeg(90);
+                    setMapDeg(270);
                     break;
                 case 'north':
                     setMapDeg(0);
                     break;
                 case 'around':
-                    // setMapDeg(___Heading);
+                    setMapDeg(deviceHeading);
                     break;
             }
         },
-        [/*___Heading,*/mapHeading]
+        [deviceHeading,mapHeading]
     );
 
     // マップへのタッチが始まったときの動作
@@ -240,10 +269,10 @@ const CampusMap: () => Node = () => {
             <Image source={require(imageSource)} style={styles.map_layer}></Image>
             <View style={styles.map_layer} pointerEvents='box-none'>
                 <View style={{flex: 1}}>
-                <TouchableOpacity onPress={toggleModal} style={{position: 'absolute', top: '10%', left: '20%', transform: [{rotate: (-mapDeg) + 'deg'}, {scale: 1/mapScale}]}}>
+                <TouchableOpacity onPress={toggleModal} style={{position: 'absolute', top: '10%', left: '20%', transform: [{rotate: (mapDeg) + 'deg'}, {scale: 1/mapScale}]}}>
                     <Text style={styles.buildg_text}>本館</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={toggleModal} style={{position: 'absolute', top: '25%', left: '8%', transform: [{rotate: (-mapDeg) + 'deg'}, {scale: 1/mapScale}]}}>
+                <TouchableOpacity onPress={toggleModal} style={{position: 'absolute', top: '25%', left: '8%', transform: [{rotate: (mapDeg) + 'deg'}, {scale: 1/mapScale}]}}>
                     <Text style={styles.buildg_text}>糸山英太郎記念教育センター</Text>
                 </TouchableOpacity>
                 <TouchableOpacity>
