@@ -27,7 +27,7 @@ const CampusMap: () => Node = () => {
     const defaultWidth = 1080;
     const defaultHeight = 960;
     const {width, height, scale} = Dimensions.get('window');
-    const imageSource = './images/gas.jpg';
+    const imageSource = './images/map_image.jpeg';
 
     // 地図画像の表示用変数
     const [mapWidth, setMapWidth] = useState(defaultWidth);
