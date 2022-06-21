@@ -12,7 +12,6 @@ import {
     Platform,
 } from 'react-native';
 import Geolocation from 'react-native-geolocation-service';
-import LPF from 'lpf/lib/LPF';
 import Modal from 'react-native-modal';
 import DeviceHeading from './DeviceHeading';
 
@@ -136,11 +135,19 @@ const CampusMap: () => Node = () => {
     // 方位角をモジュールから取得
     useEffect(
         () => {
+            const os = {};
+            if (Platform.OS == 'android') {
+                os.delay = 500
+            }
+            else if (Platform.OS == 'ios') {
+                os.delay = 20
+            }
+
             const watchId =  DeviceHeading.watchHeading(
                 azimuth => {
-                    setDeviceHeading(azimuth);
-                    console.log(azimuth);
-                }
+                    if (azimuth != null) setDeviceHeading(azimuth);
+                },
+                os.delay
             );
 
             return () => {

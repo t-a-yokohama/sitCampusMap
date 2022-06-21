@@ -27,7 +27,6 @@ import CoreLocation
   }
   
   func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
-    NSLog("called")
     if newHeading.trueHeading == -1 {
       azimuth = newHeading.magneticHeading
       

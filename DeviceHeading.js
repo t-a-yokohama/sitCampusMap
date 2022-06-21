@@ -4,16 +4,16 @@ const { RNHeadingModule } = NativeModules;
 
 const DeviceHeading = {
 
-    watchHeading: (callback) => {
+    watchHeading: (callback, delay=500) => {
         RNHeadingModule.start();
-        var azimuth
+        var azimuth;
 
         const id = setInterval(() => {
             RNHeadingModule.getHeading(deg => {
                 azimuth = deg;
             });
             callback(azimuth);
-        }, 250);
+        }, delay);
         return id;
     },
 
