@@ -13,8 +13,11 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		35C2D8455C48CB92A83B28EB /* libPods-sitcampusmap-sitcampusmapTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19C4B47E38D982905F7C4332 /* libPods-sitcampusmap-sitcampusmapTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		D66E738A2845CADD007C939B /* DeviceHeading.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66E73892845CADD007C939B /* DeviceHeading.swift */; };
-		D66E738D2845CC59007C939B /* DeviceHeading.m in Sources */ = {isa = PBXBuildFile; fileRef = D66E738C2845CC59007C939B /* DeviceHeading.m */; };
+		BA1631D9E99543010B626DD0 /* libPods-sitcampusmap.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A0CB4DD2C10D67D203CFD272 /* libPods-sitcampusmap.a */; };
+		D603919F28617E87001C4A94 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D603919E28617E87001C4A94 /* CoreLocation.framework */; };
+		D60391A128617E9C001C4A94 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D60391A028617E9C001C4A94 /* CoreLocation.framework */; };
+		D66E738A2845CADD007C939B /* RNHeadingModuel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66E73892845CADD007C939B /* RNHeadingModuel.swift */; };
+		D66E738D2845CC59007C939B /* RNHeadingModule.m in Sources */ = {isa = PBXBuildFile; fileRef = D66E738C2845CC59007C939B /* RNHeadingModule.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,9 +48,11 @@
 		89C6BE57DB24E9ADA2F236DE /* Pods-sitcampusmap-sitcampusmapTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sitcampusmap-sitcampusmapTests.release.xcconfig"; path = "Target Support Files/Pods-sitcampusmap-sitcampusmapTests/Pods-sitcampusmap-sitcampusmapTests.release.xcconfig"; sourceTree = "<group>"; };
 		A0CB4DD2C10D67D203CFD272 /* libPods-sitcampusmap.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-sitcampusmap.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7EB86A80D606FF836105C53 /* Pods-sitcampusmapTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sitcampusmapTests.debug.xcconfig"; path = "Target Support Files/Pods-sitcampusmapTests/Pods-sitcampusmapTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D603919E28617E87001C4A94 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		D60391A028617E9C001C4A94 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk/System/Library/Frameworks/CoreLocation.framework; sourceTree = DEVELOPER_DIR; };
 		D66A71AF2849C93400573A8D /* sitcampusmap-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "sitcampusmap-Bridging-Header.h"; sourceTree = "<group>"; };
-		D66E73892845CADD007C939B /* DeviceHeading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceHeading.swift; sourceTree = "<group>"; };
-		D66E738C2845CC59007C939B /* DeviceHeading.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceHeading.m; sourceTree = "<group>"; };
+		D66E73892845CADD007C939B /* RNHeadingModuel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RNHeadingModuel.swift; sourceTree = "<group>"; };
+		D66E738C2845CC59007C939B /* RNHeadingModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNHeadingModule.m; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		F3477A093FAA05F4E0EEDD1C /* Pods-sitcampusmapTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sitcampusmapTests.release.xcconfig"; path = "Target Support Files/Pods-sitcampusmapTests/Pods-sitcampusmapTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -57,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D60391A128617E9C001C4A94 /* CoreLocation.framework in Frameworks */,
 				35C2D8455C48CB92A83B28EB /* libPods-sitcampusmap-sitcampusmapTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -65,6 +71,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D603919F28617E87001C4A94 /* CoreLocation.framework in Frameworks */,
+				BA1631D9E99543010B626DD0 /* libPods-sitcampusmap.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,8 +99,8 @@
 		13B07FAE1A68108700A75B9A /* sitcampusmap */ = {
 			isa = PBXGroup;
 			children = (
-				D66E738C2845CC59007C939B /* DeviceHeading.m */,
-				D66E73892845CADD007C939B /* DeviceHeading.swift */,
+				D66E738C2845CC59007C939B /* RNHeadingModule.m */,
+				D66E73892845CADD007C939B /* RNHeadingModuel.swift */,
 				D66A71AF2849C93400573A8D /* sitcampusmap-Bridging-Header.h */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
@@ -107,6 +115,8 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D603919E28617E87001C4A94 /* CoreLocation.framework */,
+				D60391A028617E9C001C4A94 /* CoreLocation.framework */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				A0CB4DD2C10D67D203CFD272 /* libPods-sitcampusmap.a */,
 				19C4B47E38D982905F7C4332 /* libPods-sitcampusmap-sitcampusmapTests.a */,
@@ -421,8 +431,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
-				D66E738A2845CADD007C939B /* DeviceHeading.swift in Sources */,
-				D66E738D2845CC59007C939B /* DeviceHeading.m in Sources */,
+				D66E738A2845CADD007C939B /* RNHeadingModuel.swift in Sources */,
+				D66E738D2845CC59007C939B /* RNHeadingModule.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -498,6 +508,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = QQTQ2377WF;
+				"DEVELOPMENT_TEAM[sdk=*]" = QQTQ2377WF;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = sitcampusmap/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -527,6 +539,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = QQTQ2377WF;
+				"DEVELOPMENT_TEAM[sdk=*]" = QQTQ2377WF;
 				INFOPLIST_FILE = sitcampusmap/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (

@@ -11,14 +11,16 @@ import type { Node } from 'react';
 import {
     SafeAreaView,
     StyleSheet,
-    Alert,
+    Platform,
     PermissionsAndroid,
 } from 'react-native';
 import CampusMap from './CampusMap';
 
 const App: () => Node = () => {
     // Androidに位置情報権限を要求
-    PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION);
+    if (Platform.OS == "android") {
+        PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION);
+    }
 
     return (
         <SafeAreaView style={styles.container}>

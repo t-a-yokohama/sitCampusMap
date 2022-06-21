@@ -6,7 +6,7 @@ import androidx.lifecycle.LifecycleRegistry
 import androidx.lifecycle.Observer
 import com.facebook.react.bridge.*
 
-class DeviceHeading(reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
+class RNHeadingModule(reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
     override fun getName(): String = "DeviceHeading"
 
     @ReactMethod(isBlockingSynchronousMethod = true)
@@ -14,14 +14,17 @@ class DeviceHeading(reactContext: ReactApplicationContext) : ReactContextBaseJav
     private val myLifecycleOwner = MyLifecycleOwner()
 
     @ReactMethod
-    fun stop(reactContext: ReactApplicationContext) {
+    fun start() {
+        myLifecycleOwner.start()
+    }
+
+    @ReactMethod
+    fun stop() {
         myLifecycleOwner.stop()
     }
 
     @ReactMethod
-    fun watchHeading(callback: Callback, reactContext: ReactApplicationContext) {
-        myLifecycleOwner.start()
-
+    fun getHeading(callback: Callback) {
         SensorLiveData(reactApplicationContext).observe(myLifecycleOwner, Observer<Double> { azimuth: Double ->
             callback.invoke(azimuth)
         })

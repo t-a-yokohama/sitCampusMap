@@ -10,13 +10,12 @@ import {
     Dimensions,
     TouchableOpacity,
     Platform,
-    NativeModules,
 } from 'react-native';
 import Geolocation from 'react-native-geolocation-service';
 import LPF from 'lpf/lib/LPF';
 import Modal from 'react-native-modal';
+import DeviceHeading from './DeviceHeading';
 
-const {DeviceHeading} = NativeModules;
 
 // iOSに位置情報権限を要求
 if (Platform.OS == 'ios') {
@@ -76,7 +75,7 @@ const CampusMap: () => Node = () => {
             left: mapLeftX,
             height: mapHeight,
             width: mapWidth,
-            transform: [{ rotate: mapDeg + "deg" },
+            transform: [{ rotate: -mapDeg + "deg" },
                         { scale: mapScale},
                         ],
         },
@@ -137,15 +136,15 @@ const CampusMap: () => Node = () => {
     // 方位角をモジュールから取得
     useEffect(
         () => {
-            DeviceHeading.watchHeading(
+            const watchId =  DeviceHeading.watchHeading(
                 azimuth => {
-                    console.log(azimuth);
                     setDeviceHeading(azimuth);
+                    console.log(azimuth);
                 }
             );
 
             return () => {
-                DeviceHeading.stop();
+                DeviceHeading.stop(watchId);
             }
         },
         []
@@ -157,7 +156,7 @@ const CampusMap: () => Node = () => {
         () => {
             switch (mapHeading) {
                 case 'west':
-                    setMapDeg(90);
+                    setMapDeg(270);
                     break;
                 case 'north':
                     setMapDeg(0);
@@ -263,10 +262,10 @@ const CampusMap: () => Node = () => {
             <Image source={require(imageSource)} style={styles.map_layer}></Image>
             <View style={styles.map_layer} pointerEvents='box-none'>
                 <View style={{flex: 1}}>
-                <TouchableOpacity onPress={toggleModal} style={{position: 'absolute', top: '10%', left: '20%', transform: [{rotate: (-mapDeg) + 'deg'}, {scale: 1/mapScale}]}}>
+                <TouchableOpacity onPress={toggleModal} style={{position: 'absolute', top: '10%', left: '20%', transform: [{rotate: (mapDeg) + 'deg'}, {scale: 1/mapScale}]}}>
                     <Text style={styles.buildg_text}>本館</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={toggleModal} style={{position: 'absolute', top: '25%', left: '8%', transform: [{rotate: (-mapDeg) + 'deg'}, {scale: 1/mapScale}]}}>
+                <TouchableOpacity onPress={toggleModal} style={{position: 'absolute', top: '25%', left: '8%', transform: [{rotate: (mapDeg) + 'deg'}, {scale: 1/mapScale}]}}>
                     <Text style={styles.buildg_text}>糸山英太郎記念教育センター</Text>
                 </TouchableOpacity>
                 <TouchableOpacity>
