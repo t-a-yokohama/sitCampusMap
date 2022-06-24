@@ -33,8 +33,8 @@ const CampusMap: () => Node = () => {
     // 地図画像の表示用変数
     const [mapWidth, setMapWidth] = useState(defaultWidth);
     const [mapHeight, setMapHeight] = useState(defaultHeight);
-    const [mapTopY, setMapTopY] = useState(-200);
-    const [mapLeftX, setMapLeftX] = useState(-200);
+    const [mapTopY, setMapTopY] = useState(-400);
+    const [mapLeftX, setMapLeftX] = useState(-500);
     const [mapDeg, setMapDeg] = useState(0);
     const [mapScale, setMapScale] = useState(1.0);
 
