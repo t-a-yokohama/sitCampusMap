@@ -25,16 +25,16 @@ if (Platform.OS == 'ios') {
 
 const CampusMap: () => Node = () => {
     // スタイルに使う変数の定義
-    const defaultWidth = 1080;
-    const defaultHeight = 960;
+    const defaultWidth = 1400;
+    const defaultHeight = 1500;
     const {width, height, scale} = Dimensions.get('window');
     const imageSource = './images/map_image.jpeg';
 
     // 地図画像の表示用変数
     const [mapWidth, setMapWidth] = useState(defaultWidth);
     const [mapHeight, setMapHeight] = useState(defaultHeight);
-    const [mapTopY, setMapTopY] = useState(0);
-    const [mapLeftX, setMapLeftX] = useState(0);
+    const [mapTopY, setMapTopY] = useState(-200);
+    const [mapLeftX, setMapLeftX] = useState(-200);
     const [mapDeg, setMapDeg] = useState(0);
     const [mapScale, setMapScale] = useState(1.0);
 
@@ -87,12 +87,20 @@ const CampusMap: () => Node = () => {
         },
         buildg_text: {
             color: 'red',
-            fontSize: 20,
+            fontSize: 20 * mapScale,
             fontWeight: 'bold',
+            textDecorationLine: 'underline',
+            backgroundColor: '#ffffff77',
+        },
+        buildg_text_non_touch: {
+            color: 'red',
+            fontSize: 20 * mapScale,
+            fontWeight: 'bold',
+            backgroundColor: '#ffffff77',
         },
         modal_inside: {
-            backgroundColor: '#ffffffdd',
-            margin: 30,
+            backgroundColor: '#ffffffee',
+            margin: 20,
             borderRadius: 40,
         },
         modal_safety: {
@@ -140,7 +148,7 @@ const CampusMap: () => Node = () => {
                 os.delay = 500
             }
             else if (Platform.OS == 'ios') {
-                os.delay = 20
+                os.delay = 30
             }
 
             const watchId =  DeviceHeading.watchHeading(
@@ -163,7 +171,7 @@ const CampusMap: () => Node = () => {
         () => {
             switch (mapHeading) {
                 case 'west':
-                    setMapDeg(270);
+                    setMapDeg(265);
                     break;
                 case 'north':
                     setMapDeg(0);
@@ -213,7 +221,7 @@ const CampusMap: () => Node = () => {
 
     // マップ拡大動作
     const mapZoomIn = () => {
-        if (mapScale < 1.8) {
+        if (mapScale < 1.4) {
             setMapScale(mapScale + 0.2);
         }
     };
@@ -269,14 +277,61 @@ const CampusMap: () => Node = () => {
             <Image source={require(imageSource)} style={styles.map_layer}></Image>
             <View style={styles.map_layer} pointerEvents='box-none'>
                 <View style={{flex: 1}}>
-                <TouchableOpacity onPress={toggleModal} style={{position: 'absolute', top: '10%', left: '20%', transform: [{rotate: (mapDeg) + 'deg'}, {scale: 1/mapScale}]}}>
+                <TouchableOpacity style={{position: 'absolute', top: '44%', left: '79%', transform: [{rotate: (mapDeg) + 'deg'}, {scale: 1/mapScale}]}}>
+                    <Text style={styles.buildg_text_non_touch}>大学正門</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={{position: 'absolute', top: '50%', left: '17%', transform: [{rotate: (mapDeg) + 'deg'}, {scale: 1/mapScale}]}}>
+                    <Text style={styles.buildg_text_non_touch}>(高校正門)</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={toggleModal} style={{position: 'absolute', top: '41.3%', left: '70%', transform: [{rotate: (mapDeg) + 'deg'}, {scale: 1/mapScale}]}}>
                     <Text style={styles.buildg_text}>本館</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={toggleModal} style={{position: 'absolute', top: '25%', left: '8%', transform: [{rotate: (mapDeg) + 'deg'}, {scale: 1/mapScale}]}}>
-                    <Text style={styles.buildg_text}>糸山英太郎記念教育センター</Text>
+                <TouchableOpacity onPress={toggleModal} style={{position: 'absolute', top: '33.5%', left: '52.3%', transform: [{rotate: (mapDeg) + 'deg'}, {scale: 1/mapScale}]}}>
+                    <Text style={styles.buildg_text}>1号館</Text>
                 </TouchableOpacity>
-                <TouchableOpacity>
-                    <Text></Text>
+                <TouchableOpacity onPress={toggleModal} style={{position: 'absolute', top: '25.4%', left: '52%', transform: [{rotate: (mapDeg) + 'deg'}, {scale: 1/mapScale}]}}>
+                    <Text style={styles.buildg_text}>2号館</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={toggleModal} style={{position: 'absolute', top: '65.5%', left: '55%', transform: [{rotate: (mapDeg) + 'deg'}, {scale: 1/mapScale}]}}>
+                    <Text style={styles.buildg_text}>3号館</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={toggleModal} style={{position: 'absolute', top: '73%', left: '51%', transform: [{rotate: (mapDeg) + 'deg'}, {scale: 1/mapScale}]}}>
+                    <Text style={styles.buildg_text}>4号館</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={toggleModal} style={{position: 'absolute', top: '74.3%', left: '34%', transform: [{rotate: (mapDeg) + 'deg'}, {scale: 1/mapScale}]}}>
+                    <Text style={styles.buildg_text}>5号館</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={toggleModal} style={{position: 'absolute', top: '72.5%', left: '24.2%', transform: [{rotate: (mapDeg) + 'deg'}, {scale: 1/mapScale}]}}>
+                    <Text style={styles.buildg_text}>6号館</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={toggleModal} style={{position: 'absolute', top: '58.8%', left: '23.5%', transform: [{rotate: (mapDeg) + 'deg'}, {scale: 1/mapScale}]}}>
+                    <Text style={styles.buildg_text}>7号館</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={toggleModal} style={{position: 'absolute', top: '60%', left: '30%', transform: [{rotate: (mapDeg) + 'deg'}, {scale: 1/mapScale}]}}>
+                    <Text style={styles.buildg_text}>8号館</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={toggleModal} style={{position: 'absolute', top: '58.8%', left: '37%', transform: [{rotate: (mapDeg) + 'deg'}, {scale: 1/mapScale}]}}>
+                    <Text style={styles.buildg_text}>9号館</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={toggleModal} style={{position: 'absolute', top: '56%', left: '55%', transform: [{rotate: (mapDeg) + 'deg'}, {scale: 1/mapScale}]}}>
+                    <Text style={styles.buildg_text}>糸山英太郎記念</Text>
+                    <Text style={styles.buildg_text}>教育センター</Text>
+                    <Text style={styles.buildg_text}>（Ａ館）</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={toggleModal} style={{position: 'absolute', top: '64%', left: '46.5%', transform: [{rotate: (mapDeg) + 'deg'}, {scale: 1/mapScale}]}}>
+                    <Text style={styles.buildg_text}>佐々木記念</Text>
+                    <Text style={styles.buildg_text}>体育会館</Text>
+                    <Text style={styles.buildg_text}>(大学体育館)</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={toggleModal} style={{position: 'absolute', top: '33.5%', left: '67%', transform: [{rotate: (mapDeg) + 'deg'}, {scale: 1/mapScale}]}}>
+                    <Text style={styles.buildg_text}>大講義室・</Text>
+                    <Text style={styles.buildg_text}>付属図書館</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={toggleModal} style={{position: 'absolute', top: '64%', left: '61%', transform: [{rotate: (mapDeg) + 'deg'}, {scale: 1/mapScale}]}}>
+                    <Text style={styles.buildg_text}>学生会館</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={toggleModal} style={{position: 'absolute', top: '24.5%', left: '67%', transform: [{rotate: (mapDeg) + 'deg'}, {scale: 1/mapScale}]}}>
+                    <Text style={styles.buildg_text}>大学会館</Text>
                 </TouchableOpacity>
                 </View>
             </View>
