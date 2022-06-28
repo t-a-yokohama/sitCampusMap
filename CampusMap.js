@@ -13,6 +13,7 @@ import {
 } from 'react-native';
 import Geolocation from 'react-native-geolocation-service';
 import Modal from 'react-native-modal';
+import { SvgCss, SvgXml } from 'react-native-svg';
 import DeviceHeading from './DeviceHeading';
 
 
@@ -29,6 +30,11 @@ const CampusMap: () => Node = () => {
     const defaultHeight = 1500;
     const {width, height, scale} = Dimensions.get('window');
     const imageSource = './images/map_image.jpeg';
+    const coord_icon = `<?xml version="1.0" encoding="UTF-8"?><svg id="_イヤー_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 72.65 101.31"><defs><style>.cls-1{fill:url(#_エローグラデ);stroke:#231815;stroke-miterlimit:10;stroke-width:5px;}</style><linearGradient id="_エローグラデ" x1="21.77" y1="36.55" x2="70.47" y2="120.9" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset=".49" stop-color="#f2f2bd"/><stop offset=".5" stop-color="#f5c32b"/></linearGradient></defs><g id="_イヤー_1-2"><path class="cls-1" d="M25.41,7.54L6.03,30.32c-2.28,2.68-3.53,6.09-3.53,9.61v43.5c0,8.5,6.89,15.39,15.39,15.39H54.76c8.5,0,15.39-6.89,15.39-15.39V39.93c0-3.52-1.25-6.93-3.53-9.61L47.24,7.54C41.52,.82,31.13,.82,25.41,7.54Z"/></g></svg>`;
+    const zoomin_icon = `<?xml version="1.0" encoding="UTF-8"?><svg id="_イヤー_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 108.94 108.94"><defs><style>.cls-1{fill:url(#_ンクグラデ);}.cls-1,.cls-2,.cls-3{stroke:#231815;stroke-miterlimit:10;stroke-width:5px;}.cls-2{fill:url(#_称未設定グラデーション_49-2);}.cls-3{fill:url(#_称未設定グラデーション_49);}</style><linearGradient id="_ンクグラデ" x1="41.46" y1="31.94" x2="93.86" y2="122.7" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset=".49" stop-color="#edbfd2"/><stop offset=".5" stop-color="#e388ad"/></linearGradient><linearGradient id="_称未設定グラデーション_49" x1="46.39" y1="40.32" x2="70.82" y2="82.62" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset=".49" stop-color="#f3c2d7"/><stop offset=".5" stop-color="#f2c0d5"/><stop offset=".5" stop-color="#f2b9d1"/><stop offset=".5" stop-color="#f1adca"/><stop offset=".5" stop-color="#f09cbf"/><stop offset=".5" stop-color="#ef8db6"/></linearGradient><linearGradient id="_称未設定グラデーション_49-2" x1="-347.45" y1="475.5" x2="-323.03" y2="517.8" gradientTransform="translate(-435.09 -284.81) rotate(-90)" xlink:href="#_称未設定グラデーション_49"/></defs><g id="_イヤー_1-2"><g><circle class="cls-1" cx="54.47" cy="54.47" r="51.97"/><g><line class="cls-3" x1="21.89" y1="54.47" x2="87.24" y2="54.47"/><line class="cls-2" x1="54.56" y1="87.15" x2="54.56" y2="21.79"/></g></g></g></svg>`;
+    const zoomout_icon = `<?xml version="1.0" encoding="UTF-8"?><svg id="_イヤー_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 108.94 108.94"><defs><style>.cls-1{fill:url(#_称未設定グラデーション_49);}.cls-1,.cls-2{stroke:#231815;stroke-miterlimit:10;stroke-width:5px;}.cls-2{fill:url(#_ルーグラデ);}</style><linearGradient id="_ルーグラデ" x1="41.46" y1="31.94" x2="93.86" y2="122.7" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset=".49" stop-color="#a9d2e9"/><stop offset=".5" stop-color="#72bada"/></linearGradient><linearGradient id="_称未設定グラデーション_49" x1="46.39" y1="40.32" x2="70.82" y2="82.62" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset=".49" stop-color="#f3c2d7"/><stop offset=".5" stop-color="#f2c0d5"/><stop offset=".5" stop-color="#f2b9d1"/><stop offset=".5" stop-color="#f1adca"/><stop offset=".5" stop-color="#f09cbf"/><stop offset=".5" stop-color="#ef8db6"/></linearGradient></defs><g id="_イヤー_1-2"><g><circle class="cls-2" cx="54.47" cy="54.47" r="51.97"/><line class="cls-1" x1="21.89" y1="54.47" x2="87.24" y2="54.47"/></g></g></svg>`;
+    const compass_icon = `<?xml version="1.0" encoding="UTF-8"?><svg id="_イヤー_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100.19 100.19"><defs><style>.cls-1{fill:url(#_ープルグラデ);stroke:#231815;stroke-miterlimit:10;stroke-width:5px;}</style><linearGradient id="_ープルグラデ" x1="38.19" y1="29.47" x2="86.17" y2="112.58" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset=".49" stop-color="#a9a4d0"/><stop offset=".5" stop-color="#7e78a3"/></linearGradient></defs><g id="_イヤー_1-2"><circle class="cls-1" cx="50.1" cy="50.1" r="47.6"/></g></svg>`;
+    const compass_needle = `<?xml version="1.0" encoding="UTF-8"?><svg id="_イヤー_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22.69 75.59"><defs><style>.cls-1{fill:#fff;}.cls-1,.cls-2{stroke:#231815;stroke-miterlimit:10;stroke-width:3px;}.cls-2{fill:#e61673;}</style></defs><g id="_イヤー_1-2"><g><polygon class="cls-2" points="11.34 5.41 1.99 37.8 20.69 37.8 11.34 5.41"/><polygon class="cls-1" points="11.34 70.18 20.69 37.8 1.99 37.8 11.34 70.18"/></g></g></svg>`;
 
     // 地図画像の表示用変数
     const [mapWidth, setMapWidth] = useState(defaultWidth);
@@ -37,6 +43,10 @@ const CampusMap: () => Node = () => {
     const [mapLeftX, setMapLeftX] = useState(-500);
     const [mapDeg, setMapDeg] = useState(0);
     const [mapScale, setMapScale] = useState(1.0);
+    const [coordX, setCoordX] = useState(0.28); // 0.0-1.0
+    const [coordY, setCoordY] = useState(0.66); // 0.0-1.0
+    const [iconX, setIconX] = useState('43.5%');
+    const [iconY, setIconY] = useState('77%');
 
     // タッチ操作の直前位置記憶用
     const [prevPointX1, setPrevPointX1] = useState();
@@ -66,7 +76,7 @@ const CampusMap: () => Node = () => {
             left: 0,
             height: '200%',
             width: '200%',
-            backgroundColor: '#444444',
+            backgroundColor: '#dcf0ff',
         },
         map_layer: {
             position: 'absolute',
@@ -116,8 +126,10 @@ const CampusMap: () => Node = () => {
             const WatchID = Geolocation.watchPosition(
                 position => {
                     const {latitude, longitude} = position.coords;
-
-                    // console.log(latitude+' '+longitude);
+                    setCoordX( (longitude - 139.44910) / (139.45511 - 139.44910) );
+                    setCoordY( 1.0 - (latitude - 35.32220) / (35.32749 - 35.32220) );
+                    setIconX( (longitude - 139.44910) / (139.45511 - 139.44910) * 100 + "%" );
+                    setIconY( (1.0 - (latitude - 35.32220) / (35.32749 - 35.32220)) * 100 + "%" );
                 },
                 error => {
                     console.log(error.code+' '+error.message);
@@ -277,6 +289,9 @@ const CampusMap: () => Node = () => {
             <Image source={require(imageSource)} style={styles.map_layer}></Image>
             <View style={styles.map_layer} pointerEvents='box-none'>
                 <View style={{flex: 1}}>
+                <View style={{position: 'absolute', top: iconY, left: iconX, width: 72.65 * 0.45, height: 101.31 * 0.45, transform: [{ rotate: deviceHeading + "deg" }]}}>
+                    <SvgCss xml={coord_icon}/>
+                </View>
                 <TouchableOpacity style={{position: 'absolute', top: '44%', left: '79%', transform: [{rotate: (mapDeg) + 'deg'}, {scale: 1/mapScale}]}}>
                     <Text style={styles.buildg_text_non_touch}>大学正門</Text>
                 </TouchableOpacity>
@@ -336,20 +351,23 @@ const CampusMap: () => Node = () => {
                 </View>
             </View>
             <View style={styles.ui_layer} pointerEvents='box-none'>
-                <TouchableOpacity onPress={toggleHeading} style={{top: height*0.70, left: width*0.85, width: 40, backgroundColor: "white"}}>
-                    <Text style={{fontSize: 40}}>＊</Text>
+                <TouchableOpacity onPress={toggleHeading} style={{position: 'relative', top: height*0.70, left: width*0.85, width: 50, height:50}}>
+                    <SvgCss xml={compass_icon}></SvgCss>
+                    <View style={{width:50, height:50, top:-50, transform:[{rotate:-mapDeg + "deg"}]}}>
+                        <SvgCss xml={compass_needle}/>
+                    </View>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={mapZoomIn} style={{top: height*0.73, left: width*0.85, width: 40, backgroundColor: "white"}}>
-                    <Text style={{fontSize: 40}}>＋</Text>
+                <TouchableOpacity onPress={mapZoomIn} style={{top: height*0.73, left: width*0.85, width: 50, height: 50}}>
+                    <SvgCss xml={zoomin_icon}/>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={mapZoomOut} style={{top: height*0.75, left: width*0.85, width: 40, backgroundColor: "white"}}>
-                    <Text style={{fontSize: 40}}>ー</Text>
+                <TouchableOpacity onPress={mapZoomOut} style={{top: height*0.75, left: width*0.85, width: 50, height: 50}}>
+                    <SvgCss xml={zoomout_icon}/>
                 </TouchableOpacity>
             </View>
         </View>
 
         <View>
-            <TextInput style={{zIndex: 5, elevation: 5, position: 'absolute', borderRadius: 5, top: 30, left: width * 0.05, width: width * 0.9, backgroundColor: 'white', fontSize: 24}} placeholder=" Search"></TextInput>
+            <TextInput style={{zIndex: 5, elevation: 5, position: 'absolute', borderRadius: 5, top: 30, left: width * 0.05, width: width * 0.9, color:'black', backgroundColor: 'white', fontSize: 24}} placeholder=" Search"></TextInput>
         </View>
 
         <Modal isVisible={modalVisible} animationIn="fadeIn" animationOut="fadeOut" onBackButtonPress={toggleModal} onBackdropPress={toggleModal}>
