@@ -10,6 +10,7 @@ import {
     Dimensions,
     TouchableOpacity,
     Platform,
+    Linking,
 } from 'react-native';
 import Geolocation from 'react-native-geolocation-service';
 import Modal from 'react-native-modal';
@@ -57,6 +58,9 @@ const CampusMap: () => Node = () => {
     const [prevPointY2, setPrevPointY2] = useState();
 
 
+    // 現在地追従モードの保存用
+    const [isRelative, setIsRelative] = useState(true);
+
     // 方角固定のモード保存用
     const [mapHeading, setMapHeading] = useState('west');
 
@@ -65,6 +69,18 @@ const CampusMap: () => Node = () => {
 
     // モーダルの表示・非表示切り替え
     const [modalVisible, setModalVisible] = useState(false);
+
+    // モーダルのフロアマップURI
+    const [floor1Uri, setFloor1Uri] = useState("");
+    const [floor2Uri, setFloor2Uri] = useState("");
+    const [floor3Uri, setFloor3Uri] = useState("");
+    const [floor4Uri, setFloor4Uri] = useState("");
+
+    // モーダルのリンクURL
+    const [url1, setUrl1] = useState("");
+    const [url2, setUrl2] = useState("");
+    const [url3, setUrl3] = useState("");
+    const [url4, setUrl4] = useState("");
 
     const modal = React.createRef();
 
@@ -119,7 +135,36 @@ const CampusMap: () => Node = () => {
             marginTop: 40,
             marginLeft: 20,
             marginRight: 20,
-        }
+            color: 'black',
+        },
+        modal_title: {
+            fontWeight: 'bold',
+            fontSize: 28,
+            margin: 3,
+        },
+        modal_subtitle: {
+            fontSize: 20,
+            marginTop: 26,
+        },
+        modal_text: {
+            fontSize: 15,
+            margin: 5,
+            marginLeft: 15,
+            lineHeight: 23,
+        },
+        modal_picture: {
+            width: '100%',
+            margin: 5,
+            marginLeft: 15,
+        },
+        modal_link: {
+            fontSize: 15,
+            margin: 5,
+            marginLeft: 15,
+            lineHeight: 23,
+            color: 'blue',
+            textDecorationLine: 'underline',
+        },
     });
 
     // 詳細な位置情報を取得(Android:500ms)
@@ -284,6 +329,11 @@ const CampusMap: () => Node = () => {
         setModalVisible(!modalVisible);
     };
 
+    // モーダルのリンクアクセス
+    const connectToUrl = async url => {
+        if (url != "") await Linking.openURL(url).catch(error => console.warn('could not open url',error));
+    }
+
 
     return (
         <>
@@ -373,12 +423,33 @@ const CampusMap: () => Node = () => {
         </View>
 
         <Modal isVisible={modalVisible} animationIn="fadeIn" animationOut="fadeOut" onBackButtonPress={toggleModal} onBackdropPress={toggleModal}>
-            <TouchableOpacity onPress={toggleModal} style={{zIndex: 10, elevation: 10, position: 'absolute', top: 40, left: (width - 120), width: 40,}}>
+            <TouchableOpacity onPress={toggleModal} style={{zIndex: 10, elevation: 10, position: 'absolute', bottom: 40, left: (width - 120), width: 40,}}>
                 <Text style={{fontSize: 40,}}>×</Text>
             </TouchableOpacity>
             <ScrollView ref={modal} style={styles.modal_inside}>
                 <View style={styles.modal_safety}>
-                    <Text>Hello World !</Text>
+                    <Text style={styles.modal_title}>4号館</Text>
+                    <Text style={styles.modal_title}>大学講義棟</Text>
+                    <Text style={styles.modal_subtitle}>主要施設</Text>
+                    <Text style={styles.modal_text}>SITガクラボ(修学支援センター){"\n"}社会貢献活動支援室{"\n"}学生ラウンジ(aqua){"\n"}保健室{"\n"}SMILE(すみれ)ラウンジ{"\n"}総合文化教育センター{"\n"}地域連携センター{"\n"}アクティブラーニング推進室</Text>
+                    <Text style={styles.modal_subtitle}>フロアマップ</Text>
+                    <Image style={styles.modal_picture} source={{uri: floor1Uri}}></Image>
+                    <Image style={styles.modal_picture} source={{uri: floor2Uri}}></Image>
+                    <Image style={styles.modal_picture} source={{uri: floor3Uri}}></Image>
+                    <Image style={styles.modal_picture} source={{uri: floor4Uri}}></Image>
+                    <Text style={styles.modal_subtitle}>関連リンク</Text>
+                    <TouchableOpacity onPress={() => {connectToUrl(url1)}}>
+                        <Text style={styles.modal_link}></Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => {connectToUrl(url2)}}>
+                        <Text style={styles.modal_link}></Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => {connectToUrl(url3)}}>
+                        <Text style={styles.modal_link}></Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => {connectToUrl(url4)}}>
+                        <Text style={styles.modal_link}></Text>
+                    </TouchableOpacity>
                 </View>
             </ScrollView>
         </Modal>
