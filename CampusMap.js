@@ -467,12 +467,12 @@ const CampusMap: () => Node = () => {
                 <View style={{position: 'absolute', top: iconY, left: iconX, width: 32.6925, height: 45.5895, transform: [{ rotate: deviceHeading + "deg" }]}}>
                     <SvgCss xml={coord_icon}/>
                 </View>
-                <TouchableOpacity style={{position: 'absolute', top: '44%', left: '79%', transform: [{rotate: (mapDeg) + 'deg'}, {scale: 1/mapScale}]}}>
+                <View style={{position: 'absolute', top: '44%', left: '79%', transform: [{rotate: (mapDeg) + 'deg'}, {scale: 1/mapScale}]}}>
                     <Text style={styles.buildg_text_non_touch}>大学正門</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={{position: 'absolute', top: '50%', left: '17%', transform: [{rotate: (mapDeg) + 'deg'}, {scale: 1/mapScale}]}}>
+                </View>
+                <View style={{position: 'absolute', top: '50%', left: '17%', transform: [{rotate: (mapDeg) + 'deg'}, {scale: 1/mapScale}]}}>
                     <Text style={styles.buildg_text_non_touch}>(高校正門)</Text>
-                </TouchableOpacity>
+                </View>
                 <TouchableOpacity onPress={() => textOnPress('Hk')} style={{position: 'absolute', top: '41.3%', left: '70%', transform: [{rotate: (mapDeg) + 'deg'}, {scale: 1/mapScale}]}}>
                     <Text style={styles.buildg_text}>本館</Text>
                 </TouchableOpacity>
