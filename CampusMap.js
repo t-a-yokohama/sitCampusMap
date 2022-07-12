@@ -31,6 +31,7 @@ const CampusMap: () => Node = () => {
     const defaultHeight = 1500;
     const {width, height, scale} = Dimensions.get('window');
     const imageSource = './images/map_image.jpeg';
+    const serverHost = "https://dev-test.ayuki.yokohama/";
     const coord_icon = `<?xml version="1.0" encoding="UTF-8"?><svg id="_イヤー_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 72.65 101.31"><defs><style>.cls-1{fill:url(#_エローグラデ);stroke:#231815;stroke-miterlimit:10;stroke-width:5px;}</style><linearGradient id="_エローグラデ" x1="21.77" y1="36.55" x2="70.47" y2="120.9" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset=".49" stop-color="#f2f2bd"/><stop offset=".5" stop-color="#f5c32b"/></linearGradient></defs><g id="_イヤー_1-2"><path class="cls-1" d="M25.41,7.54L6.03,30.32c-2.28,2.68-3.53,6.09-3.53,9.61v43.5c0,8.5,6.89,15.39,15.39,15.39H54.76c8.5,0,15.39-6.89,15.39-15.39V39.93c0-3.52-1.25-6.93-3.53-9.61L47.24,7.54C41.52,.82,31.13,.82,25.41,7.54Z"/></g></svg>`;
     const zoomin_icon = `<?xml version="1.0" encoding="UTF-8"?><svg id="_イヤー_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 108.94 108.94"><defs><style>.cls-1{fill:url(#_ンクグラデ);}.cls-1,.cls-2,.cls-3{stroke:#231815;stroke-miterlimit:10;stroke-width:5px;}.cls-2{fill:url(#_称未設定グラデーション_49-2);}.cls-3{fill:url(#_称未設定グラデーション_49);}</style><linearGradient id="_ンクグラデ" x1="41.46" y1="31.94" x2="93.86" y2="122.7" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset=".49" stop-color="#edbfd2"/><stop offset=".5" stop-color="#e388ad"/></linearGradient><linearGradient id="_称未設定グラデーション_49" x1="46.39" y1="40.32" x2="70.82" y2="82.62" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset=".49" stop-color="#f3c2d7"/><stop offset=".5" stop-color="#f2c0d5"/><stop offset=".5" stop-color="#f2b9d1"/><stop offset=".5" stop-color="#f1adca"/><stop offset=".5" stop-color="#f09cbf"/><stop offset=".5" stop-color="#ef8db6"/></linearGradient><linearGradient id="_称未設定グラデーション_49-2" x1="-347.45" y1="475.5" x2="-323.03" y2="517.8" gradientTransform="translate(-435.09 -284.81) rotate(-90)" xlink:href="#_称未設定グラデーション_49"/></defs><g id="_イヤー_1-2"><g><circle class="cls-1" cx="54.47" cy="54.47" r="51.97"/><g><line class="cls-3" x1="21.89" y1="54.47" x2="87.24" y2="54.47"/><line class="cls-2" x1="54.56" y1="87.15" x2="54.56" y2="21.79"/></g></g></g></svg>`;
     const zoomout_icon = `<?xml version="1.0" encoding="UTF-8"?><svg id="_イヤー_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 108.94 108.94"><defs><style>.cls-1{fill:url(#_称未設定グラデーション_49);}.cls-1,.cls-2{stroke:#231815;stroke-miterlimit:10;stroke-width:5px;}.cls-2{fill:url(#_ルーグラデ);}</style><linearGradient id="_ルーグラデ" x1="41.46" y1="31.94" x2="93.86" y2="122.7" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset=".49" stop-color="#a9d2e9"/><stop offset=".5" stop-color="#72bada"/></linearGradient><linearGradient id="_称未設定グラデーション_49" x1="46.39" y1="40.32" x2="70.82" y2="82.62" gradientTransform="matrix(1, 0, 0, 1, 0, 0)" gradientUnits="userSpaceOnUse"><stop offset=".49" stop-color="#f3c2d7"/><stop offset=".5" stop-color="#f2c0d5"/><stop offset=".5" stop-color="#f2b9d1"/><stop offset=".5" stop-color="#f1adca"/><stop offset=".5" stop-color="#f09cbf"/><stop offset=".5" stop-color="#ef8db6"/></linearGradient></defs><g id="_イヤー_1-2"><g><circle class="cls-2" cx="54.47" cy="54.47" r="51.97"/><line class="cls-1" x1="21.89" y1="54.47" x2="87.24" y2="54.47"/></g></g></svg>`;
@@ -82,7 +83,24 @@ const CampusMap: () => Node = () => {
     const [url3, setUrl3] = useState("");
     const [url4, setUrl4] = useState("");
 
-    const modal = React.createRef();
+    // モーダルの表示テキスト
+    const [formalName, setFormalName] = useState("本館");
+    const [anotherName, setAnotherName] = useState("大学本館");
+    const [facilities, setFacilities] = useState("");
+    const [firstFloor, setFirstFloor] = useState("1階");
+    const [secondFloor, setSecondFloor] = useState("2階");
+    const [thirdFloor, setThirdFloor] = useState("3階");
+    const [fourthFloor, setFourthFloor] = useState("4階");
+    const [linkOne, setLinkOne] = useState("");
+    const [linkTwo, setLinkTwo] = useState("");
+    const [linkThree, setLinkThree] = useState("");
+    const [linkFour, setLinkFour] = useState("");
+
+    // フロアマップの表示height
+    const [picHeight1, setPicHeight1] = useState(0);
+    const [picHeight2, setPicHeight2] = useState(0);
+    const [picHeight3, setPicHeight3] = useState(0);
+    const [picHeight4, setPicHeight4] = useState(0);
 
     
 
@@ -156,9 +174,27 @@ const CampusMap: () => Node = () => {
             lineHeight: 23,
             color: 'black',
         },
-        modal_picture: {
+        modal_picture1: {
             width: "100%",
-            height: 200,
+            height: picHeight1,
+            margin: 2,
+            marginLeft: 15,
+        },
+        modal_picture2: {
+            width: "100%",
+            height: picHeight2,
+            margin: 2,
+            marginLeft: 15,
+        },
+        modal_picture3: {
+            width: "100%",
+            height: picHeight3,
+            margin: 2,
+            marginLeft: 15,
+        },
+        modal_picture4: {
+            width: "100%",
+            height: picHeight4,
             margin: 2,
             marginLeft: 15,
         },
@@ -329,6 +365,89 @@ const CampusMap: () => Node = () => {
         }
     }
 
+    // 建物のテキストが押下されたときの処理
+    const textOnPress = async id => {
+
+        // APIコール
+        const request_uri = serverHost + "sit-buildgs.php?id=" + id;
+        const json = await (await fetch(request_uri, {method:'GET', mode:'cors'})).json();
+        console.log(json);
+
+        // 正式名称
+        setFormalName(json.formal_name);
+
+        // 別称
+        setAnotherName(json.other_name);
+
+        // 施設名
+        var tempFacilities = "";
+        for (var i = 0; i < json.facility_num; i++) {
+            tempFacilities += json.facilities[i];
+            if (i != json.facility_num - 1) {
+                tempFacilities += '\n';
+            }
+        }
+        setFacilities(tempFacilities);
+
+        // フロアマップ
+        setFirstFloor("");
+        setSecondFloor("");
+        setThirdFloor("");
+        setFourthFloor("");
+        setFloor1Uri("");
+        setFloor2Uri("");
+        setFloor3Uri("");
+        setFloor4Uri("");
+        setPicHeight1(0);
+        setPicHeight2(0);
+        setPicHeight3(0);
+        setPicHeight4(0);
+        switch (json.floors) {
+            case '4':
+                setFourthFloor("4階");
+                setPicHeight4(200);
+                setFloor4Uri(serverHost + "image/" + json.pic_uri[3]);
+            case '3':
+                setThirdFloor("3階");
+                setPicHeight3(200);
+                setFloor3Uri(serverHost + "image/" + json.pic_uri[2]);
+            case '2':
+                setSecondFloor("2階");
+                setPicHeight2(200);
+                setFloor2Uri(serverHost + "image/" + json.pic_uri[1]);
+            case '1':
+                setFirstFloor("1階");
+                setPicHeight1(200);
+                setFloor1Uri(serverHost + "image/" + json.pic_uri[0]);
+        }
+
+        // 関連リンク
+        setLinkOne("");
+        setLinkTwo("");
+        setLinkThree("");
+        setLinkFour("");
+        setUrl1("");
+        setUrl2("");
+        setUrl3("");
+        setUrl4("");
+        switch (json.link_num) {
+            case '4':
+                setLinkFour(json.link_title[3]);
+                setUrl4(json.link_url[3]);
+            case '3':
+                setLinkThree(json.link_title[2]);
+                setUrl3(json.link_url[2]);
+            case '2':
+                setLinkTwo(json.link_title[1]);
+                setUrl2(json.link_url[1]);
+            case '1':
+                setLinkOne(json.link_title[0]);
+                setUrl1(json.link_url[0]);
+        }
+
+        toggleModal();
+    };
+
     // モーダルの表示・非表示切り替え
     const toggleModal = () => {
         setModalVisible(!modalVisible);
@@ -355,54 +474,54 @@ const CampusMap: () => Node = () => {
                 <TouchableOpacity style={{position: 'absolute', top: '50%', left: '17%', transform: [{rotate: (mapDeg) + 'deg'}, {scale: 1/mapScale}]}}>
                     <Text style={styles.buildg_text_non_touch}>(高校正門)</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={toggleModal} style={{position: 'absolute', top: '41.3%', left: '70%', transform: [{rotate: (mapDeg) + 'deg'}, {scale: 1/mapScale}]}}>
+                <TouchableOpacity onPress={() => textOnPress('Hk')} style={{position: 'absolute', top: '41.3%', left: '70%', transform: [{rotate: (mapDeg) + 'deg'}, {scale: 1/mapScale}]}}>
                     <Text style={styles.buildg_text}>本館</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={toggleModal} style={{position: 'absolute', top: '33.5%', left: '52.3%', transform: [{rotate: (mapDeg) + 'deg'}, {scale: 1/mapScale}]}}>
+                <TouchableOpacity onPress={() => textOnPress('SUB1')} style={{position: 'absolute', top: '33.5%', left: '52.3%', transform: [{rotate: (mapDeg) + 'deg'}, {scale: 1/mapScale}]}}>
                     <Text style={styles.buildg_text}>1号館</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={toggleModal} style={{position: 'absolute', top: '25.4%', left: '52%', transform: [{rotate: (mapDeg) + 'deg'}, {scale: 1/mapScale}]}}>
+                <TouchableOpacity onPress={() => textOnPress('SUB2')} style={{position: 'absolute', top: '25.4%', left: '52%', transform: [{rotate: (mapDeg) + 'deg'}, {scale: 1/mapScale}]}}>
                     <Text style={styles.buildg_text}>2号館</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={toggleModal} style={{position: 'absolute', top: '65.5%', left: '55%', transform: [{rotate: (mapDeg) + 'deg'}, {scale: 1/mapScale}]}}>
+                <TouchableOpacity onPress={() => textOnPress('SUB3')} style={{position: 'absolute', top: '65.5%', left: '55%', transform: [{rotate: (mapDeg) + 'deg'}, {scale: 1/mapScale}]}}>
                     <Text style={styles.buildg_text}>3号館</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={toggleModal} style={{position: 'absolute', top: '73%', left: '51%', transform: [{rotate: (mapDeg) + 'deg'}, {scale: 1/mapScale}]}}>
+                <TouchableOpacity onPress={() => textOnPress('SUB4')} style={{position: 'absolute', top: '73%', left: '51%', transform: [{rotate: (mapDeg) + 'deg'}, {scale: 1/mapScale}]}}>
                     <Text style={styles.buildg_text}>4号館</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={toggleModal} style={{position: 'absolute', top: '74.3%', left: '34%', transform: [{rotate: (mapDeg) + 'deg'}, {scale: 1/mapScale}]}}>
+                <TouchableOpacity onPress={() => textOnPress('SUB5')} style={{position: 'absolute', top: '74.3%', left: '34%', transform: [{rotate: (mapDeg) + 'deg'}, {scale: 1/mapScale}]}}>
                     <Text style={styles.buildg_text}>5号館</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={toggleModal} style={{position: 'absolute', top: '72.5%', left: '24.2%', transform: [{rotate: (mapDeg) + 'deg'}, {scale: 1/mapScale}]}}>
+                <TouchableOpacity onPress={() => textOnPress('SUB6')} style={{position: 'absolute', top: '72.5%', left: '24.2%', transform: [{rotate: (mapDeg) + 'deg'}, {scale: 1/mapScale}]}}>
                     <Text style={styles.buildg_text}>6号館</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={toggleModal} style={{position: 'absolute', top: '58.8%', left: '23.5%', transform: [{rotate: (mapDeg) + 'deg'}, {scale: 1/mapScale}]}}>
+                <TouchableOpacity onPress={() => textOnPress('SUB7')} style={{position: 'absolute', top: '58.8%', left: '23.5%', transform: [{rotate: (mapDeg) + 'deg'}, {scale: 1/mapScale}]}}>
                     <Text style={styles.buildg_text}>7号館</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={toggleModal} style={{position: 'absolute', top: '60%', left: '30%', transform: [{rotate: (mapDeg) + 'deg'}, {scale: 1/mapScale}]}}>
+                <TouchableOpacity onPress={() => textOnPress('SUB8')} style={{position: 'absolute', top: '60%', left: '30%', transform: [{rotate: (mapDeg) + 'deg'}, {scale: 1/mapScale}]}}>
                     <Text style={styles.buildg_text}>8号館</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={toggleModal} style={{position: 'absolute', top: '58.8%', left: '37%', transform: [{rotate: (mapDeg) + 'deg'}, {scale: 1/mapScale}]}}>
+                <TouchableOpacity onPress={() => textOnPress('SUB9')} style={{position: 'absolute', top: '58.8%', left: '37%', transform: [{rotate: (mapDeg) + 'deg'}, {scale: 1/mapScale}]}}>
                     <Text style={styles.buildg_text}>9号館</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={toggleModal} style={{position: 'absolute', top: '56%', left: '55%', transform: [{rotate: (mapDeg) + 'deg'}, {scale: 1/mapScale}]}}>
+                <TouchableOpacity onPress={() => textOnPress('Iy')} style={{position: 'absolute', top: '56%', left: '55%', transform: [{rotate: (mapDeg) + 'deg'}, {scale: 1/mapScale}]}}>
                     <Text style={styles.buildg_text}>糸山英太郎記念</Text>
                     <Text style={styles.buildg_text}>教育センター</Text>
                     <Text style={styles.buildg_text}>（Ａ館）</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={toggleModal} style={{position: 'absolute', top: '64%', left: '46.5%', transform: [{rotate: (mapDeg) + 'deg'}, {scale: 1/mapScale}]}}>
+                <TouchableOpacity onPress={() => textOnPress('Ti')} style={{position: 'absolute', top: '64%', left: '46.5%', transform: [{rotate: (mapDeg) + 'deg'}, {scale: 1/mapScale}]}}>
                     <Text style={styles.buildg_text}>佐々木記念</Text>
                     <Text style={styles.buildg_text}>体育会館</Text>
                     <Text style={styles.buildg_text}>(大学体育館)</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={toggleModal} style={{position: 'absolute', top: '33.5%', left: '67%', transform: [{rotate: (mapDeg) + 'deg'}, {scale: 1/mapScale}]}}>
+                <TouchableOpacity onPress={() => textOnPress('Fz')} style={{position: 'absolute', top: '33.5%', left: '67%', transform: [{rotate: (mapDeg) + 'deg'}, {scale: 1/mapScale}]}}>
                     <Text style={styles.buildg_text}>大講義室・</Text>
                     <Text style={styles.buildg_text}>付属図書館</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={toggleModal} style={{position: 'absolute', top: '64%', left: '61%', transform: [{rotate: (mapDeg) + 'deg'}, {scale: 1/mapScale}]}}>
+                <TouchableOpacity onPress={() => textOnPress('Gs')} style={{position: 'absolute', top: '64%', left: '61%', transform: [{rotate: (mapDeg) + 'deg'}, {scale: 1/mapScale}]}}>
                     <Text style={styles.buildg_text}>学生会館</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={toggleModal} style={{position: 'absolute', top: '24.5%', left: '67%', transform: [{rotate: (mapDeg) + 'deg'}, {scale: 1/mapScale}]}}>
+                <TouchableOpacity onPress={() => textOnPress('Dg')} style={{position: 'absolute', top: '24.5%', left: '67%', transform: [{rotate: (mapDeg) + 'deg'}, {scale: 1/mapScale}]}}>
                     <Text style={styles.buildg_text}>大学会館</Text>
                 </TouchableOpacity>
                 </View>
@@ -431,35 +550,34 @@ const CampusMap: () => Node = () => {
             <TouchableOpacity onPress={toggleModal} style={{zIndex: 10, elevation: 10, position: 'absolute', bottom: 20, left: (width - 100), width: 40,}}>
                 <Text style={{fontSize: 40, color: 'black'}}>×</Text>
             </TouchableOpacity>
-            <ScrollView ref={modal} style={styles.modal_inside}>
+            <ScrollView style={styles.modal_inside}>
                 <View style={styles.modal_safety}>
-                    <Text style={styles.modal_title}>本館</Text>
-                    <Text style={styles.modal_title}>大学本館</Text>
+                    <Text style={styles.modal_title}>{formalName}</Text>
+                    <Text style={styles.modal_title}>{anotherName}</Text>
                     <Text style={styles.modal_subtitle}>主要施設</Text>
-                    <Text style={styles.modal_text}>コンピュータ応用学科{"\n"}総合デザイン学科{"\n"}大学院室{"\n"}大学事務局</Text>
+                    <Text style={styles.modal_text}>{facilities}</Text>
                     <Text style={styles.modal_subtitle}>フロアマップ</Text>
-                    <Text style={styles.modal_text}>1階</Text>
-                    <Image style={styles.modal_picture} source={{uri: floor1Uri}} resizeMode='contain'></Image>
-                    <Text style={styles.modal_text}>2階</Text>
-                    <Image style={styles.modal_picture} source={{uri: floor2Uri}} resizeMode='contain'></Image>
-                    <Text style={styles.modal_text}>3階</Text>
-                    <Image style={styles.modal_picture} source={{uri: floor3Uri}} resizeMode='contain'></Image>
-                    <Text style={styles.modal_text}>4階</Text>
-                    <Image style={styles.modal_picture} source={{uri: floor4Uri}} resizeMode='contain'></Image>
+                    <Text style={styles.modal_text}>{firstFloor}</Text>
+                    <Image style={styles.modal_picture1} source={{uri: floor1Uri}} resizeMode='contain'></Image>
+                    <Text style={styles.modal_text}>{secondFloor}</Text>
+                    <Image style={styles.modal_picture2} source={{uri: floor2Uri}} resizeMode='contain'></Image>
+                    <Text style={styles.modal_text}>{thirdFloor}</Text>
+                    <Image style={styles.modal_picture3} source={{uri: floor3Uri}} resizeMode='contain'></Image>
+                    <Text style={styles.modal_text}>{fourthFloor}</Text>
+                    <Image style={styles.modal_picture4} source={{uri: floor4Uri}} resizeMode='contain'></Image>
                     <Text style={styles.modal_subtitle}>関連リンク</Text>
                     <TouchableOpacity onPress={() => {connectToUrl(url1)}}>
-                        <Text style={styles.modal_link}>コンピュータ応用学科</Text>
+                        <Text style={styles.modal_link}>{linkOne}</Text>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => {connectToUrl(url2)}}>
-                        <Text style={styles.modal_link}>総合デザイン学科</Text>
+                        <Text style={styles.modal_link}>{linkTwo}</Text>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => {connectToUrl(url3)}}>
-                        <Text style={styles.modal_link}></Text>
+                        <Text style={styles.modal_link}>{linkThree}</Text>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => {connectToUrl(url4)}}>
-                        <Text style={styles.modal_link}></Text>
+                        <Text style={styles.modal_link}>{linkFour}</Text>
                     </TouchableOpacity>
-                    <Text>{"\n"}{"\n"}{"\n"}{"\n"}{"\n"}{"\n"}{"\n"}{"\n"}{"\n"}{"\n"}{"\n"}{"\n"}{"\n"}{"\n"}{"\n"}{"\n"}{"\n"}{"\n"}{"\n"}{"\n"}{"\n"}{"\n"}{"\n"}{"\n"}{"\n"}</Text>
                 </View>
             </ScrollView>
         </Modal>
