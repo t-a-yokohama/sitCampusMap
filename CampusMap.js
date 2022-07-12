@@ -72,20 +72,20 @@ const CampusMap: () => Node = () => {
     const [modalVisible, setModalVisible] = useState(false);
 
     // モーダルのフロアマップURI
-    const [floor1Uri, setFloor1Uri] = useState("https://dev-test.ayuki.yokohama/image/h-1.png");
-    const [floor2Uri, setFloor2Uri] = useState("https://dev-test.ayuki.yokohama/image/h-2.png");
-    const [floor3Uri, setFloor3Uri] = useState("https://dev-test.ayuki.yokohama/image/h-3.png");
-    const [floor4Uri, setFloor4Uri] = useState("https://dev-test.ayuki.yokohama/image/h-4.png");
+    const [floor1Uri, setFloor1Uri] = useState(serverHost + "image/unknown.png");
+    const [floor2Uri, setFloor2Uri] = useState(serverHost + "image/unknown.png");
+    const [floor3Uri, setFloor3Uri] = useState(serverHost + "image/unknown.png");
+    const [floor4Uri, setFloor4Uri] = useState(serverHost + "image/unknown.png");
 
     // モーダルのリンクURL
-    const [url1, setUrl1] = useState("https://www.shonan-it.ac.jp/faculties/computer/");
-    const [url2, setUrl2] = useState("https://www.shonan-it.ac.jp/faculties/design/");
+    const [url1, setUrl1] = useState("");
+    const [url2, setUrl2] = useState("");
     const [url3, setUrl3] = useState("");
     const [url4, setUrl4] = useState("");
 
     // モーダルの表示テキスト
-    const [formalName, setFormalName] = useState("本館");
-    const [anotherName, setAnotherName] = useState("大学本館");
+    const [formalName, setFormalName] = useState("");
+    const [anotherName, setAnotherName] = useState("");
     const [facilities, setFacilities] = useState("");
     const [firstFloor, setFirstFloor] = useState("1階");
     const [secondFloor, setSecondFloor] = useState("2階");
@@ -371,7 +371,6 @@ const CampusMap: () => Node = () => {
         // APIコール
         const request_uri = serverHost + "sit-buildgs.php?id=" + id;
         const json = await (await fetch(request_uri, {method:'GET', mode:'cors'})).json();
-        console.log(json);
 
         // 正式名称
         setFormalName(json.formal_name);
@@ -394,10 +393,10 @@ const CampusMap: () => Node = () => {
         setSecondFloor("");
         setThirdFloor("");
         setFourthFloor("");
-        setFloor1Uri("");
-        setFloor2Uri("");
-        setFloor3Uri("");
-        setFloor4Uri("");
+        setFloor1Uri(serverHost + "image/unknown.png");
+        setFloor2Uri(serverHost + "image/unknown.png");
+        setFloor3Uri(serverHost + "image/unknown.png");
+        setFloor4Uri(serverHost + "image/unknown.png");
         setPicHeight1(0);
         setPicHeight2(0);
         setPicHeight3(0);
