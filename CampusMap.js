@@ -61,6 +61,7 @@ const CampusMap: () => Node = () => {
 
     // 現在地追従モードの保存用
     const [isRelative, setIsRelative] = useState(true);
+    const [relativeIcon, setRelativeIcon] = useState(relative_on);
 
     // 方角固定のモード保存用
     const [mapHeading, setMapHeading] = useState('west');
@@ -257,6 +258,19 @@ const CampusMap: () => Node = () => {
         [coordY]
     );
 
+    // 現在地ボタンの画像切り替え
+    useEffect(
+        () => {
+            if (isRelative) {
+                setRelativeIcon(relative_on);
+            }
+            else {
+                setRelativeIcon(relative_off);
+            }
+        },
+        [isRelative]
+    );
+
     // 方位角をモジュールから取得
     useEffect(
         () => {
@@ -367,6 +381,16 @@ const CampusMap: () => Node = () => {
         setMapTopY(mapTopY + Moved.y);
     };
 
+    // 表示範囲の固定・追従切り替え
+    const toggleRelative = () => {
+        if (isRelative) {
+            setIsRelative(false);
+        }
+        else {
+            setIsRelative(true);
+        }
+    };
+
     // マップの回転固定切り替え
     const toggleHeading = () => {
         switch (mapHeading) {
@@ -380,7 +404,7 @@ const CampusMap: () => Node = () => {
                 setMapHeading('west');
                 break;
         }
-    }
+    };
 
     // 建物のテキストが押下されたときの処理
     const textOnPress = async id => {
@@ -472,7 +496,7 @@ const CampusMap: () => Node = () => {
     // モーダルのリンクアクセス
     const connectToUrl = async url => {
         if (url != "") await Linking.openURL(url).catch(error => console.warn('could not open url',error));
-    }
+    };
 
 
     return (
@@ -543,16 +567,19 @@ const CampusMap: () => Node = () => {
                 </View>
             </View>
             <View style={styles.ui_layer} pointerEvents='box-none'>
-                <TouchableOpacity onPress={toggleHeading} style={{position: 'relative', top: height*0.70, left: width*0.85, width: 50, height:50}}>
+                <TouchableOpacity onPress={toggleRelative} style={{top: height*0.60, left: width*0.85, width: 50, height: 50}}>
+                    <SvgCss xml={relativeIcon}/>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={toggleHeading} style={{position: 'relative', top: height*0.66, left: width*0.85, width: 50, height: 50}}>
                     <SvgCss xml={compass_icon}></SvgCss>
                     <View style={{width:50, height:50, top:-50, transform:[{rotate:-mapDeg + "deg"}]}}>
                         <SvgCss xml={compass_needle}/>
                     </View>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={mapZoomIn} style={{top: height*0.73, left: width*0.85, width: 50, height: 50}}>
+                <TouchableOpacity onPress={mapZoomIn} style={{top: height*0.68, left: width*0.85, width: 50, height: 50}}>
                     <SvgCss xml={zoomin_icon}/>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={mapZoomOut} style={{top: height*0.75, left: width*0.85, width: 50, height: 50}}>
+                <TouchableOpacity onPress={mapZoomOut} style={{top: height*0.70, left: width*0.85, width: 50, height: 50}}>
                     <SvgCss xml={zoomout_icon}/>
                 </TouchableOpacity>
             </View>
