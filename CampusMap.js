@@ -240,6 +240,23 @@ const CampusMap: () => Node = () => {
         []
     );
 
+    // 位置情報更新時に地図の表示範囲を追従させる
+    useEffect(
+        () => {
+            if (isRelative) {
+                // 地図の範囲外の場合は追従モードをオフにして処理から外す
+                if ( (coordX < 0.0 || coordX > 1.0) || (coordY < 0.0 || coordY > 1.0) ) {
+                    setIsRelative(false);
+                }
+                else {
+                    setMapLeftX( -(defaultWidth * coordX - width / 2) );
+                    setMapTopY( -(defaultHeight * coordY - height / 2) );
+                }
+            }
+        },
+        [coordY]
+    );
+
     // 方位角をモジュールから取得
     useEffect(
         () => {
